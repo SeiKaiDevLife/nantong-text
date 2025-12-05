@@ -177,7 +177,7 @@
       <!-- 结果区域 (初始隐藏) -->
       <div id="result-area" class="hidden">
         <div class="bg-primary/10 rounded-2xl p-6 flex flex-col items-center justify-center h-64 mb-6">
-          <img id="result-emoji" class="w-24 h-24 mb-4 float-animation" src="image/pig.png" alt="猪">
+          <img id="result-emoji" class="w-24 h-24 mb-4 float-animation" src="image/gay.png" alt="男同">
           <h2 id="result-title" class="text-2xl font-bold text-gray-800 mb-2">男同</h2>
           <p id="result-description" class="text-gray-600">
             你是一只男同！
@@ -202,7 +202,7 @@
 
   <script>
     // 结果数据
-    const pigResults = [
+    const nantongResults = [
       {
         id: "hetero",
         name: "异性恋",
@@ -302,14 +302,14 @@
     // 检查是否已有结果
     let savedResult = null;
     try {
-      savedResult = localStorage.getItem('pigTestResult');
+      savedResult = localStorage.getItem('nantongTestResult');
       if (savedResult) {
         // showResult(JSON.parse(savedResult));
       }
     } catch (error) {
       console.error('读取本地存储失败:', error);
       // 清除可能损坏的数据
-      localStorage.removeItem('pigTestResult');
+      localStorage.removeItem('nantongTestResult');
       savedResult = null;
     }
     
@@ -319,7 +319,7 @@
       e.preventDefault();
       
       // 如果已有结果，不执行任何操作
-      // if (localStorage.getItem('pigTestResult')) return;
+      // if (localStorage.getItem('nantongTestResult')) return;
       
       isHolding = true;
       startTime = Date.now();
@@ -340,7 +340,7 @@
     // 长按结束事件
     function handleHoldEnd() {
       // 如果已有结果，不执行任何操作
-      // if (localStorage.getItem('pigTestResult')) return;
+      // if (localStorage.getItem('nantongTestResult')) return;
       
       isHolding = false;
       clearInterval(progressInterval);
@@ -391,11 +391,11 @@
         playSound('complete');
         
         // 随机选择一个结果
-        const randomIndex = Math.floor(Math.random() * pigResults.length);
-        const result = pigResults[randomIndex];
+        const randomIndex = Math.floor(Math.random() * nantongResults.length);
+        const result = nantongResults[randomIndex];
         
         // 保存结果到本地存储
-        // localStorage.setItem('pigTestResult', JSON.stringify(result));
+        // localStorage.setItem('nantongTestResult', JSON.stringify(result));
         
         // 显示结果
         showResult(result);
@@ -477,7 +477,7 @@
     function handleRetest() {
       try {
         // 清除本地存储结果
-        localStorage.removeItem('pigTestResult');
+        localStorage.removeItem('nantongTestResult');
         
         // 重置进度条
         resetProgress();
@@ -487,7 +487,7 @@
         resultArea.classList.add('hidden');
         
         // 重置提示文字
-        instruction.textContent = '长按屏幕中间区域，看看你是什么猪！';
+        instruction.textContent = '长按屏幕中间区域，看看你是什么男同！';
       } catch (error) {
         console.error('重新测试失败:', error);
       }
