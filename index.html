@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>测测你是不是猪</title>
+  <title>测测你是不是男同</title>
   <!-- Tailwind CSS v3 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="three.r134.min.js"></script>
@@ -304,7 +304,7 @@
     try {
       savedResult = localStorage.getItem('pigTestResult');
       if (savedResult) {
-        showResult(JSON.parse(savedResult));
+        // showResult(JSON.parse(savedResult));
       }
     } catch (error) {
       console.error('读取本地存储失败:', error);
@@ -319,7 +319,7 @@
       e.preventDefault();
       
       // 如果已有结果，不执行任何操作
-      if (localStorage.getItem('pigTestResult')) return;
+      // if (localStorage.getItem('pigTestResult')) return;
       
       isHolding = true;
       startTime = Date.now();
@@ -340,7 +340,7 @@
     // 长按结束事件
     function handleHoldEnd() {
       // 如果已有结果，不执行任何操作
-      if (localStorage.getItem('pigTestResult')) return;
+      // if (localStorage.getItem('pigTestResult')) return;
       
       isHolding = false;
       clearInterval(progressInterval);
@@ -350,7 +350,7 @@
       
       // 恢复视觉效果
       testArea.classList.remove('scale-105');
-      instruction.textContent = '将手指放到屏幕中间区域，长按汲取猪元素';
+      instruction.textContent = '将手指放到屏幕中间区域，长按汲取男同元素';
     }
     
     // 更新进度条
@@ -395,7 +395,7 @@
         const result = pigResults[randomIndex];
         
         // 保存结果到本地存储
-        localStorage.setItem('pigTestResult', JSON.stringify(result));
+        // localStorage.setItem('pigTestResult', JSON.stringify(result));
         
         // 显示结果
         showResult(result);
@@ -404,7 +404,7 @@
         alert('生成结果失败，请重试！');
         // 重置界面
         resetProgress();
-        instruction.textContent = '长按屏幕中间区域，看看你是什么猪！';
+        instruction.textContent = '长按屏幕中间区域，看看你是什么男同！';
       }
     }
     
@@ -424,7 +424,7 @@
       // 添加图片加载失败处理
       resultEmoji.onerror = function() {
         // 如果图片加载失败，使用默认图片
-        resultEmoji.src = 'image/pig.png';
+        resultEmoji.src = 'image/gay.png';
       };
       
       // 添加结果出现动画
