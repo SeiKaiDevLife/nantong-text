@@ -8,16 +8,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="three.r134.min.js"></script>
   <script src="vanta.clouds.min.js"></script>
-  <script>
-  VANTA.CLOUDS({
-    el: "#your-element-selector",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00
-  })
-  </script>
   
   <script>
     tailwind.config = {
@@ -188,9 +178,9 @@
       <div id="result-area" class="hidden">
         <div class="bg-primary/10 rounded-2xl p-6 flex flex-col items-center justify-center h-64 mb-6">
           <img id="result-emoji" class="w-24 h-24 mb-4 float-animation" src="image/pig.png" alt="猪">
-          <h2 id="result-title" class="text-2xl font-bold text-gray-800 mb-2">猪</h2>
+          <h2 id="result-title" class="text-2xl font-bold text-gray-800 mb-2">男同</h2>
           <p id="result-description" class="text-gray-600">
-            你是一只可爱的小猪猪！
+            你是一只男同！
           </p>
         </div>
         
@@ -206,7 +196,7 @@
     
     <!-- 页脚 -->
     <footer class="text-gray-500 text-sm">
-      <p>作者：nanan <span class="text-primary">🐽</span></p>
+      <p>原作者：nanan 改编：seikai<span class="text-primary">👨‍❤️‍👨</span></p>
     </footer>
   </div>
 
@@ -214,158 +204,74 @@
     // 结果数据
     const pigResults = [
       {
-        id: "human",
-        name: "人类",
-        emoji: "👤",
-        description: "检测不出猪元素，是人类吗？",
-        analysis: "你拥有人类的思维和情感，保持着理性和智慧。不过有时候适当放松一下，学学猪的简单快乐也不错哦！"
+        id: "hetero",
+        name: "异性恋",
+        emoji: "👫",
+        description: "没有男酮的气息呢",
+        analysis: "你与同性朋友能够保持良好的关系，但绝不会产生多余的感情，如果有人质疑你是男酮，你可以自信地说出“异议！"
       },
       {
-        id: "pig",
-        name: "猪",
-        emoji: "🐷",
-        description: "普通小猪",
-        analysis: "你性格温和，喜欢简单的生活，容易满足。在别人眼中可能有些慵懒，但你知道如何享受生活的美好。"
+        id: "gay",
+        name: "男酮",
+        emoji: "👨‍❤️‍👨",
+        description: "一眼丁真，鉴定为酮",
+        analysis: "普普通通的男酮，在熙熙攘攘的世界中跌跌撞撞，总有一天能够找到属于自己的幸福"
       },
       {
-        id: "black-pig",
-        name: "小黑猪",
-        emoji: "🐖",
-        description: "小黑猪，卤出猪脚了",
-        analysis: "你有着独特的魅力，外表低调但内心丰富。黑色象征着神秘和深度，你的性格也像一本值得细细品味的书。"
+        id: "alpha-gay",
+        name: "王之男酮",
+        emoji: "👑💪",
+        description: "dark♂deep♂fantasy",
+        analysis: "男人中的男人！浓烈的雄性激素能够让任何同性臣服，为新王的诞生献上礼炮！"
       },
       {
-        id: "wild-boar",
-        name: "野猪",
-        emoji: "🐗",
-        description: "你是一只勇猛的野猪！",
-        analysis: "你性格刚强，充满活力和冒险精神。遇到困难从不轻易退缩，有着坚韧不拔的意志和强大的生存能力。"
+        id: "pseudo-gay",
+        name: "假装男酮",
+        emoji: "🎭🤔",
+        description: "我们中出了一个叛徒",
+        analysis: "虽然看起来像男酮，行为举止也像男酮，大家都觉得你是男酮，但你确实不是男酮，只是能引起心灵共鸣的人恰巧是同性罢"
       },
       {
-        id: "zhuge-liang",
-        name: "猪葛亮",
-        emoji: "🐷🧠",
-        description: "猪里最聪明的一个",
-        analysis: "你聪明绝顶，机智过人，有着非凡的智慧和谋略。在关键时刻总能想出解决问题的办法，是大家眼中的智多星。"
+        id: "player-gay",
+        name: "渣男酮",
+        emoji: "😎💔",
+        description: "秘技·十艘跳",
+        analysis: "即使是男酮，也要脚踏数条船，也许你并不是渣，只是心碎成了很多很多片"
       },
       {
-        id: "pig-stamp",
-        name: "猪圆章",
-        emoji: "🐷🔴",
-        description: "《猪圈那些事》",
-        analysis: "你做事认真负责，注重细节，有着强烈的责任感。你的存在让周围的一切都变得更加有序和可靠。"
+        id: "fff-brigade",
+        name: "FFF团",
+        emoji: "🔥⚔️",
+        description: "烧死那对异性恋",
+        analysis: "不是男酮，但对异性恋深恶痛觉，在某种意义上，你是男酮坚实的盟友"
       },
       {
-        id: "zombie-pig",
-        name: "僵尸猪",
-        emoji: "🧟🐷",
-        description: "喜欢的食物是猪脑",
-        analysis: "你有着独特的个性和思维方式，常常让人捉摸不透。你的创造力和想象力丰富，总能带来意想不到的惊喜。"
+        id: "female",
+        name: "女人",
+        emoji: "👩💃",
+        description: "女人为什么要点进这个测试？",
+        analysis: "如果你不是女人，那就是觉醒了心中的雌"
       },
       {
-        id: "skeleton-pig",
-        name: "骷髅猪",
-        emoji: "💀🐷",
-        description: "资深不死族",
-        analysis: "你外表看起来有些冷酷，但内心温暖。你有着独特的审美和品味，喜欢追求个性和与众不同。"
+        id: "alt-gay",
+        name: "中号男酮",
+        emoji: "🎪✨",
+        description: "大号是L，小号是S",
+        analysis: "普通的感情只会使你麻木，你需要刺激，需要兴奋，要享受着被称为男酮的日子，异样的目光能让你血脉贲张"
       },
       {
-        id: "pig-human",
-        name: "猪人",
-        emoji: "🐷👤",
-        description: "你是猪还是人？",
-        analysis: "你兼具猪的可爱和人的智慧，能够在不同的环境中灵活适应。你有着丰富的情感和复杂的内心世界。"
+        id: "sigma-gay",
+        name: "西格玛男酮",
+        emoji: "🐺💼",
+        description: "不是不喜欢男人，只是不需要男人",
+        analysis: "独立、自主，爱情对你没有吸引力，只会影响拔剑的速度，因此反而会被认为是花花公子而非男酮"
       },
       {
-        id: "demon-pig",
-        name: "恶魔猪",
-        emoji: "😈🐷",
-        description: "满肚子坏心眼",
-        analysis: "你活泼好动，喜欢恶作剧，充满了恶作剧的精神。虽然有时候会让人头疼，但你的活力和幽默感也给周围带来了很多欢乐。"
-      },
-      {
-        id: "heaven-pig",
-        name: "天堂猪",
-        emoji: "😇🐷",
-        description: "似了喵~",
-        analysis: "你性格善良，心灵纯洁，总是愿意帮助他人。你的存在就像阳光一样温暖，给周围的人带来希望和力量。"
-      },
-      {
-        id: "explosive-pig",
-        name: "爆破小猪",
-        emoji: "💣🐷",
-        description: "我跟你爆了！",
-        analysis: "你精力充沛，热情似火，有着强烈的感染力。你的出现总能点燃周围的气氛，让一切变得更加活跃和有趣。"
-      },
-      {
-        id: "black-white-pig",
-        name: "黑白猪",
-        emoji: "⚫⚪🐷",
-        description: "串子",
-        analysis: "你有着矛盾而统一的性格，既有着严肃认真的一面，也有着活泼可爱的一面。你追求平衡和和谐，善于在不同的场合展现不同的自己。"
-      },
-      {
-        id: "pork-skewer",
-        name: "猪肉串",
-        emoji: "🍢",
-        description: "真正的串子",
-        analysis: "你性格开朗，善于与人交往，有着很强的亲和力。你就像美食一样，能够带给人满足和快乐，是大家都喜欢的对象。"
-      },
-      {
-        id: "magic-pig",
-        name: "魔法少猪",
-        emoji: "🪄🐷",
-        description: "马猪烧酒",
-        analysis: "你有着丰富的想象力和创造力，总是能够带给人惊喜和新鲜感。你的想法独特而有趣，常常能够启发他人的思维。"
-      },
-      {
-        id: "mechanical-pig",
-        name: "机械猪",
-        emoji: "🤖🐷",
-        description: "人机",
-        analysis: "你思维逻辑清晰，做事有条理，有着很强的分析和解决问题的能力。你喜欢追求效率和完美，是一个可靠的合作伙伴。"
-      },
-      {
-        id: "pig-ball",
-        name: "猪猪球",
-        emoji: "🏀🐷",
-        description: "滚了",
-        analysis: "你性格活泼好动，充满了青春活力，喜欢运动和挑战。你有着很强的适应能力，能够在不同的环境中保持积极向上的态度。"
-      },
-      {
-        id: "doll-pig",
-        name: "玩偶猪",
-        emoji: "🧸🐷",
-        description: "fufu小猪",
-        analysis: "你外表可爱，性格温柔，让人忍不住想要亲近和保护。你有着很强的治愈能力，能够带给人安慰和温暖。"
-      },
-      {
-        id: "soul-pig",
-        name: "灵魂猪",
-        emoji: "👻🐷",
-        description: "从冥界归来的猪",
-        analysis: "你有着丰富的内心世界和深刻的思想，喜欢思考人生的意义和价值。你追求精神上的满足和成长，是一个有深度的人。"
-      },
-      {
-        id: "crystal-pig",
-        name: "水晶猪",
-        emoji: "💎🐷",
-        description: "珍贵又脆弱的小猪",
-        analysis: "你有着纯洁透明的心灵和高雅的气质，就像水晶一样美丽而珍贵。你追求真善美，有着很高的道德标准和审美情趣。"
-      },
-      {
-        id: "snow-pig",
-        name: "雪猪",
-        emoji: "❄️🐷",
-        description: "洁白的雪猪",
-        analysis: "你性格纯真，心灵洁净，就像雪一样洁白无瑕。你有着独特的魅力和气质，让人忍不住想要接近和了解。"
-      },
-      {
-        id: "pig-cat",
-        name: "猪咪",
-        emoji: "🐷🐱",
-        description: "你是一只可爱的猪咪！",
-        analysis: "你兼具猪的可爱和猫的优雅，有着独特的魅力和个性。你既喜欢享受生活的美好，也有着自己的独立思想和主张。"
+        id: "trans-gay",
+        name: "男女酮",
+        emoji: "🦋⚧️",
+        description: "好怪哦，再看一眼",
+        analysis: "心理认知为女性，同时也是酮，表面看起来是正常的男女关系，实则剪不断理还乱"
       }
     ];
 
