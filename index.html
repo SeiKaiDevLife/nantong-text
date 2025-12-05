@@ -123,7 +123,7 @@
   <div class="container max-w-md mx-auto text-center">
     <!-- 标题 -->
     <h1 class="text-4xl md:text-5xl font-bold mb-6 text-primary text-shadow-lg">
-      测测你是不是男同 <span class="text-accent">🐷</span>
+      测测你是不是男同 <span class="text-accent">👨‍❤️‍👨</span>
     </h1>
     
     <!-- 主内容区 -->
@@ -182,9 +182,12 @@
           <p id="result-description" class="text-gray-600">
             你是一只男同！
           </p>
+          <p id="result-analysis" class="text-gray-700 text-sm leading-relaxed px-4 text-center">
+            普普通通的男同，在熙熙攘攘的世界中跌跌撞撞，总有一天能够找到属于自己的幸福
+          </p>
         </div>
         
-        <button id="retest-button" class="hidden bg-primary text-white py-2 px-6 rounded-full font-medium mb-4 hover:bg-primary/80 transition-colors">
+        <button id="retest-button" class="bg-primary text-white py-2 px-6 rounded-full font-medium mb-4 hover:bg-primary/80 transition-colors">
           重新测试
         </button>
         
@@ -196,7 +199,7 @@
     
     <!-- 页脚 -->
     <footer class="text-gray-500 text-sm">
-      <p>原作者：nanan 改编：seikai<span class="text-primary">👨‍❤️‍👨</span></p>
+      <p>原作者：nanan 改编：seikai<span class="text-primary"></span></p>
     </footer>
   </div>
 
@@ -286,6 +289,7 @@
     const resultEmoji = document.getElementById('result-emoji');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
+    const resultAnalysis = document.getElementById('result-analysis');
     const retestButton = document.getElementById('retest-button');
     
     // 进度条参数
@@ -304,7 +308,7 @@
     try {
       savedResult = localStorage.getItem('nantongTestResult');
       if (savedResult) {
-        // showResult(JSON.parse(savedResult));
+        showResult(JSON.parse(savedResult));
       }
     } catch (error) {
       console.error('读取本地存储失败:', error);
@@ -319,7 +323,7 @@
       e.preventDefault();
       
       // 如果已有结果，不执行任何操作
-      // if (localStorage.getItem('nantongTestResult')) return;
+      if (localStorage.getItem('nantongTestResult')) return;
       
       isHolding = true;
       startTime = Date.now();
@@ -340,7 +344,7 @@
     // 长按结束事件
     function handleHoldEnd() {
       // 如果已有结果，不执行任何操作
-      // if (localStorage.getItem('nantongTestResult')) return;
+      if (localStorage.getItem('nantongTestResult')) return;
       
       isHolding = false;
       clearInterval(progressInterval);
@@ -395,7 +399,7 @@
         const result = nantongResults[randomIndex];
         
         // 保存结果到本地存储
-        // localStorage.setItem('nantongTestResult', JSON.stringify(result));
+        localStorage.setItem('nantongTestResult', JSON.stringify(result));
         
         // 显示结果
         showResult(result);
@@ -410,24 +414,20 @@
     
     // 显示结果
     function showResult(result) {
-      // 隐藏测试区域，显示结果区域
       testArea.classList.add('hidden');
       resultArea.classList.remove('hidden');
       
-      // 设置结果内容
       const imageSrc = `image/${result.id}.png`;
       resultEmoji.src = imageSrc;
       resultEmoji.alt = result.name;
       resultTitle.textContent = result.name;
       resultDescription.textContent = result.description;
+      resultAnalysis.textContent = result.analysis;
       
-      // 添加图片加载失败处理
       resultEmoji.onerror = function() {
-        // 如果图片加载失败，使用默认图片
         resultEmoji.src = 'image/gay.png';
       };
       
-      // 添加结果出现动画
       resultArea.style.opacity = '0';
       resultArea.style.transform = 'translateY(20px)';
       resultArea.style.transition = 'opacity 0.5s, transform 0.5s';
